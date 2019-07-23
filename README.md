@@ -11,6 +11,7 @@ same instructions are also summarized in [CONTRIBUTING.md].
 ##Collaborators
 
 - Sarah Cameron
+- Janardan Mainali
 
 ## Data
 
