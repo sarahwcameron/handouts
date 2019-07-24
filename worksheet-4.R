@@ -110,6 +110,28 @@ cbp <- cbp %>%
 acs_cbp <- cbp %>%
   inner_join(acs)
 
-## HW Exercise 3 
+# HW Exercise 1
+long_survey <- gather (tidy_survey,
+  key = "attr",
+  value = "val",
+  -participant)
 
+# HW Exercise 2
+top_income <- fread('data/cbp15co.csv', na.strings = '') %>%
+  filter(str_detect(NAICS, '23---')) %>%
+  select(AP)
+
+# HW Exercise 3
+# why does sol summarize EMP=sum(EMP) twice?
+oilgas_data <- fread('data/cbp15co.csv', na.strings = '') %>%
+  filter(str_detect(NAICS, '21---')) %>%
+  group_by(FIPSTATE, FIPSCTY) %>%
+  summarize (EMP = sum(EMP), n=n())
+
+# HW Exercise 4
+pivot_table <- fread('data/cbp15co.csv', na.strings = '') %>%
+  filter(str_detect(NAICS, '[0-9]{2}----')) %>%
+  group_by(FIPSTATE, NAICS) %>%
+  summarize(EMP = sum(EMP)) %>%
+  spread(key = NAICS, value = EMP)
 
