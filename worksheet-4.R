@@ -119,13 +119,14 @@ long_survey <- gather (tidy_survey,
 # HW Exercise 2
 top_income <- fread('data/cbp15co.csv', na.strings = '') %>%
   filter(str_detect(NAICS, '23---')) %>%
-  select(AP)
+  select(starts_with('FIPS'), starts_with('AP'))
 
 # HW Exercise 3
 # why does sol summarize EMP=sum(EMP) twice?
 oilgas_data <- fread('data/cbp15co.csv', na.strings = '') %>%
   filter(str_detect(NAICS, '21---')) %>%
   group_by(FIPSTATE, FIPSCTY) %>%
+  summarize (EMP = sum(EMP)) %>%
   summarize (EMP = sum(EMP), n=n())
 
 # HW Exercise 4
