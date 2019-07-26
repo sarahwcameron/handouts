@@ -1,0 +1,23 @@
+---
+output: ioslides_presentation
+---
+```{r include = FALSE}
+library(viridis)
+```
+## Snapshot Wisconsin
+### Emily Buege, Sarah Cameron & Vivek Malleshappa
+
+```{r fig.width=5, fig.height=5,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("Snapshot.png")
+ grid.raster(img)
+```
+
+# Project Background
+
+## Numbers
+### 1706 volunteers
+### 2108 trail cameras
+### >31 million photos (and counting)
+
